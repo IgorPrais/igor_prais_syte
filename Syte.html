@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8" />
+    <title>Ігор Прайс — кандидат у голови Студпарламенту ДПУ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Офіційна сторінка Ігоря Прайса: програма «Сузірʼя», Наука, Суспільний розвиток, Кампус і сервіси. Голос студентів ДПУ." />
+    <meta property="og:title" content="Ігор Прайс — кандидат у голови Студпарламенту ДПУ" />
+    <meta property="og:description" content="Разом з’єднаємо таланти в сузір’ї ДПУ. Програма розвитку, перші 100 днів, контакти." />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0c0f14" />
+    <link rel="icon" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="%230c0f14"/><path d="M32 8l5 12 13 1-10 8 3 13-11-7-11 7 3-13-10-8 13-1z" fill="%23ffd166"/></svg>' />
+    <style>
+        :root{
+            --bg:#0c0f14; --ink:#e9edf5; --muted:#a7b0c3; --card:#111726;
+            --accent:#4cc9f0; /* Блакитний */
+            --accent2:#b388ff; /* Фіолетовий */
+            --brand:#ffd166; /* ЯСКРАВИЙ ЖОВТИЙ (ключовий акцент) */
+            --ring:0 0 0 .25rem rgba(76,201,240,.6); 
+            --glass:rgba(255,255,255,.08); 
+            --radius:18px;
+            --max:1180px; 
+            --shadow:0 30px 100px rgba(0,0,0,.6); 
+        }
+        *{box-sizing:border-box}
+        html,body{margin:0;padding:0}
+        body{
+            font-family:system-ui,-apple-system,"Segoe UI",Inter,Roboto,Ubuntu,Helvetica,Arial;
+            color:var(--ink); background:var(--bg); line-height:1.6;
+            --grad1: radial-gradient(1400px 700px at 10% -10%, #1a2240 0%, transparent 70%);
+            --grad2: radial-gradient(1100px 700px at 110% 10%, #1b2a38 0%, transparent 70%);
+            background-image: var(--grad1), var(--grad2), linear-gradient(180deg,#0a0e15,#0a0e15);
+            scroll-behavior: smooth;
+            /* ЗМІНА: Додаємо відступ, щоб контент не ховався під фіксованим хедером */
+            padding-top: 85px; 
+        }
+        .container{max-width:var(--max);margin:0 auto;padding:0 22px}
+        h1{font-size:clamp(2.2rem,3.4vw+1.4rem,4.2rem);line-height:1.1;margin:.2rem 0 .6rem}
+        h2{font-size:clamp(1.6rem,1.2vw+1.2rem,2.2rem);margin:0 0 .6rem}
+        h3{font-size:clamp(1.15rem,.6vw+1rem,1.4rem);margin:.2rem 0 .4rem}
+        p{margin:.5rem 0 1rem}
+        a{color:var(--accent);text-decoration:none; transition: all .2s; text-shadow: 0 0 5px rgba(76,201,240,.3);}
+        a:hover{color:var(--brand); text-decoration:underline; text-shadow: 0 0 8px rgba(255, 209, 102, 0.8);}
+        :focus-visible{outline:var(--ring); outline-offset: 4px;}
+        
+        @keyframes textGlow {
+            0% { text-shadow: 0 0 4px var(--brand), 0 0 10px rgba(76, 201, 240, 0.1); } 
+            50% { text-shadow: 0 0 8px var(--brand), 0 0 15px rgba(76, 201, 240, 0.2); } 
+            100% { text-shadow: 0 0 4px var(--brand), 0 0 10px rgba(76, 201, 240, 0.1); } 
+        }
+        .hero h1 {
+            animation: textGlow 4s ease-in-out infinite;
+        }
+
+        /* ---------- Header + Nav (ЗМІНА: Додано фіксоване позиціонування) ---------- */
+        header{
+            /* ЗМІНА: Робимо хедер фіксованим */
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900; /* Високий z-index, щоб бути над контентом */
+            /* Кінець змін для фіксації */
+            
+            isolation:isolate; overflow:hidden; padding-bottom:0; 
+            background-color: var(--bg); /* Фіксований хедер має мати фон */
+            /* Невеликий градієнт для візуального ефекту */
+            background-image: 
+                radial-gradient(900px 380px at 80% -10%, rgba(179,136,255,.4), transparent 60%),
+                linear-gradient(180deg, rgba(0,0,0,.25), rgba(0,0,0,0));
+            box-shadow: 0 4px 15px rgba(0,0,0,.5); /* Легка тінь */
+        }
+        #stars{
+            position:absolute; inset:0; z-index:-2; display:block; 
+            /* ЗМІНА: Зірки тепер охоплюють тільки фіксований хедер */
+            height: 100%; 
+        }
+        
+        @keyframes glowMove {
+            0% { transform: translate(0, 0) scale(1); opacity: 0.5; } 
+            50% { transform: translate(-10px, 15px) scale(1.05); opacity: 0.6; } 
+            100% { transform: translate(0, 0) scale(1); opacity: 0.5; } 
+        }
+        /* Прибираємо glow, щоб вони не заважали фіксованому хедеру, 
+           або зменшуємо їхню висоту, щоб вони не виходили за межі хедеру. */
+        .glow{display:none;} 
+        .glow2{display:none;}
+
+        .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+        .brand{display:flex;align-items:center;gap:.6rem;color:var(--ink);font-weight:800;letter-spacing:.2px}
+        .brand-mark{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--brand));color:#000;box-shadow:0 6px 16px rgba(76,201,240,.6)} 
+        .nav-menu{display:flex;gap:18px;align-items:center}
+        .nav-menu a{color:var(--ink);opacity:1; transition: all .2s ease-out;}
+        .nav-menu a:hover{color:var(--brand); transform: translateY(-2px); text-shadow: 0 0 10px rgba(255, 209, 102, 0.8);} 
+
+        .btn{
+            display:inline-block;
+            border:2px solid var(--brand); 
+            padding:.7rem 1rem;border-radius:12px;
+            color:var(--ink);text-decoration:none;transition:.3s;font-weight:650; 
+            position:relative; overflow:hidden;
+            background:linear-gradient(45deg, var(--brand), var(--accent)); 
+            color: var(--bg); 
+            text-shadow: 0 1px 1px rgba(0,0,0,.2);
+            box-shadow: 0 0 15px rgba(255, 209, 102, 0.4);
+        }
+        .btn:hover{
+            background:linear-gradient(45deg, var(--accent), var(--brand)); 
+            transform:translateY(-2px); 
+            box-shadow: 0 4px 20px rgba(255, 209, 102, .8), 0 0 25px rgba(76,201,240,.4); 
+            border-color: var(--accent);
+        }
+        .btn-ghost{
+            border-color:var(--muted);color:var(--muted);
+            background:transparent; color:var(--ink);
+            box-shadow: none;
+        }
+        .btn-ghost:hover{
+            background:rgba(167,176,195,.15); 
+            border-color:var(--accent); 
+            color:var(--accent); 
+            transform:translateY(-2px);
+            box-shadow: 0 4px 10px rgba(76,201,240,.3);
+        }
+        .btn-lg{padding:.9rem 1.25rem;border-radius:14px;font-size:1.05rem}
+        .btn-sm{padding:.45rem .8rem;border-radius:10px}
+        .nav-toggle{display:none;background:none;border:0}
+        .hamburger{width:24px;height:2px;background:var(--ink);position:relative;display:block}
+        .hamburger:before,.hamburger:after{content:"";position:absolute;left:0;width:24px;height:2px;background:var(--ink)}
+        .hamburger:before{top:-7px}.hamburger:after{top:7px}
+
+        /* ---------- Hero (ЗМІНА: Повертаємо Hero на звичайне місце) ---------- */
+        .hero{
+            display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center;
+            padding:26px 0 56px;
+            /* ЗМІНА: Прибираємо верхній відступ, оскільки він тепер у body */
+            padding-top: 56px; 
+            /* Прибираємо зайві фони, щоб вони не заважали фіксованому хедеру */
+            background-image: none !important;
+        }
+        .lead{color:var(--muted);max-width:62ch}
+        .accent{
+            background:linear-gradient(90deg,var(--brand),var(--accent));
+            -webkit-background-clip:text;background-clip:text;color:transparent;
+            font-weight: 800;
+        }
+        .hero__art{
+            border-radius:var(--radius);overflow:hidden;
+            background:linear-gradient(180deg,#0b0f1a,#0b0f1a);
+            box-shadow:var(--shadow);border:2px solid var(--accent); 
+            display: flex; align-items: flex-end; justify-content: center; 
+            transform: scale(1.02); transition: all .5s ease-out;
+            box-shadow: 0 0 50px rgba(76,201,240,0.3);
+        }
+        .hero__art:hover { transform: scale(1.03); border-color: var(--brand); box-shadow: 0 0 60px rgba(255, 209, 102, 0.4); } 
+        .hero__photo{
+            width: 100%; height: auto; display: block;
+            max-height: 480px; 
+            object-fit: cover;
+            object-position: 50% 10%; 
+            transform: scale(1.0); 
+        }
+        .hero__cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+
+        /* Додатковий фікс для мобільного меню */
+        @media (max-width: 760px){
+            body { padding-top: 135px; } /* Збільшуємо відступ, коли меню відкрите/навіть якщо просто іконка */
+            .nav-menu{top: 80px;} /* Відсуваємо меню від фіксованого хедеру */
+        }
+
+
+        /* ... (Усі інші стилі залишаються без змін) ... */
+        .section{padding:70px 0}
+        .section-alt{background:linear-gradient(180deg, rgba(255,255,255,.05), transparent)} 
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+        .animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+        .animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+        .animate-on-scroll.grid-2 .card { transition-delay: 0.2s; }
+
+
+        .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+        .card{
+            background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); 
+            border:1px solid var(--glass);border-radius:var(--radius);padding:20px;
+            box-shadow:var(--shadow);
+            transition: box-shadow .3s, transform .3s, border-color .3s;
+        }
+        .card:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(179,136,255,.3); 
+            border-color: var(--accent2);
+        }
+
+        .badge{
+            display:inline-flex;gap:.5rem;align-items:center;
+            border:1px solid var(--glass);
+            background:rgba(255,255,255,.08); 
+            padding:.35rem .6rem;border-radius:999px;color:var(--muted);font-weight:600;font-size:.9rem;
+            text-shadow: 0 0 5px rgba(255, 209, 102, 0.4);
+        }
+        .badge span { color: var(--brand); font-size: 1.2rem; }
+
+        .carousel-wrapper {
+            display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
+            gap: 20px; padding: 10px 0; scroll-snap-type: x mandatory; 
+            scrollbar-width: thin; 
+            &::-webkit-scrollbar { height: 10px; }
+            &::-webkit-scrollbar-thumb {
+                background: linear-gradient(90deg, var(--brand), var(--accent)); 
+                border-radius: 999px;
+            }
+            &::-webkit-scrollbar-track { background: var(--card); }
+        }
+
+        .carousel-item {
+            flex: 0 0 320px; max-width: 320px; scroll-snap-align: start;
+            background: var(--card); border: 1px solid var(--glass); border-radius: var(--radius); 
+            overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: box-shadow .3s, transform .3s;
+        }
+        .carousel-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255,209,102,.4); 
+        }
+
+        .item-image-container { height: 180px; overflow: hidden; }
+        .item-image-container img { width: 100%; height: 100%; object-fit: cover; }
+        .item-content { padding: 15px; }
+        .item-content h4 { margin: 0 0 5px 0; font-size: 1rem; color: var(--brand); }
+        .item-content p { margin: 0; font-size: 0.9rem; color: var(--muted); }
+
+        .pill-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 18px}
+        .pill{
+            background:transparent;border:1px solid var(--glass);color:var(--ink);
+            padding:.55rem .95rem;border-radius:999px;cursor:pointer;
+            transition: all .3s;
+        }
+        .pill:hover{border-color:var(--brand); color: var(--brand); background: rgba(255, 209, 102, 0.08);} 
+        .pill.active{
+            background:linear-gradient(45deg, rgba(76,201,240,.2), rgba(255,209,102,.15)); 
+            border-color:var(--brand); 
+            color: var(--ink); 
+            font-weight: 600;
+            box-shadow: 0 0 15px rgba(255, 209, 102, 0.6); 
+        }
+        .tabs { margin-top: 20px; }
+        .tab { display: none; background: var(--card); padding: 30px; border-radius: 8px; border-left: 5px solid var(--accent); }
+        .tab.active { display: block; }
+
+        .progress{height:16px;background:#101520;border-radius:999px;border:2px solid var(--glass)} 
+        .progress__bar{height:100%;background:linear-gradient(90deg,var(--accent),var(--brand));border-radius:999px;transition:width .8s ease; animation: pulse 2s infinite alternate;}
+        @keyframes pulse {
+            from { filter: brightness(1.1); box-shadow: 0 0 8px rgba(255, 209, 102, 0.6); } 
+            to { filter: brightness(1.3); box-shadow: 0 0 12px rgba(76,201,240,0.8); } 
+        }
+
+        details{
+            background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03)); 
+            border:1px solid var(--glass);border-radius:14px;padding:14px 16px;margin:10px 0;
+            transition: all .3s;
+        }
+        details:hover { border-color: var(--brand); } 
+        details[open]{
+            outline:var(--ring); 
+            background:rgba(255, 209, 102, 0.05); 
+            border-color: var(--brand);
+        } 
+        details>summary{cursor:pointer;font-weight:650; transition: color .3s;}
+        details:hover>summary{color: var(--brand); text-shadow: 0 0 5px rgba(255, 209, 102, 0.4);} 
+
+        .cta{
+            background:
+            radial-gradient(800px 300px at 20% -20%, rgba(255,209,102,.4), transparent 60%),
+            radial-gradient(800px 300px at 120% 0%, rgba(76,201,240,.4), transparent 60%);
+        }
+        
+        .contact-card {
+            background: var(--card); 
+            border: 2px solid var(--accent); 
+            border-radius: var(--radius); 
+            padding: 30px; 
+            box-shadow: 0 10px 40px rgba(0,0,0,.5), 0 0 30px rgba(76,201,240,.3); 
+            transition: box-shadow .3s, border-color .3s;
+        }
+        .contact-card:hover {
+            box-shadow: 0 40px 100px rgba(0,0,0,.6), 0 0 40px rgba(255, 209, 102, 0.5); 
+            border-color: var(--brand);
+        }
+        .contact-card p strong {
+            color: var(--brand); 
+        }
+
+        footer{padding:28px 0;border-top:1px solid var(--glass);color:var(--muted);text-align:center}
+
+        @media (max-width: 980px){.hero{grid-template-columns:1fr;gap:22px}.grid-2{grid-template-columns:1fr}}
+        @media (max-width: 760px){
+            .nav-toggle{display:block}
+            .nav-menu{position:absolute;right:22px;top:64px;background:linear-gradient(180deg, rgba(15,18,27,.95), rgba(13,16,24,.95));backdrop-filter:blur(10px);border:1px solid var(--glass);border-radius:14px;padding:10px 12px;display:none;flex-direction:column;gap:10px;min-width:240px;box-shadow:0 20px 40px rgba(0,0,0,.65)}
+            .nav-menu.show{display:flex}
+            .btn:hover{transform:none; box-shadow: none;} 
+        }
+        
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); 
+            display: none; 
+            align-items: center; justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            padding: 20px;
+        }
+        .modal.is-open {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background: var(--card); 
+            border: 2px solid var(--brand); 
+            border-radius: var(--radius); 
+            padding: 30px; 
+            max-width: 500px; 
+            width: 100%;
+            box-shadow: 0 0 60px rgba(255, 209, 102, 0.4); 
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease-out;
+        }
+        .modal.is-open .modal-content {
+            transform: translateY(0);
+        }
+        .modal-content h3 {
+            color: var(--brand); 
+            text-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+            margin-top: 0;
+        }
+        .modal-close {
+            position: absolute; top: 10px; right: 10px;
+            background: none; border: none; 
+            color: var(--muted); font-size: 1.5rem; 
+            cursor: pointer; transition: color 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--accent);
+        }
+        .modal-content ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        .modal-content ul li {
+            padding: 8px 0;
+            border-bottom: 1px dashed rgba(255,255,255,.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .modal-content ul li:before {
+            content: '⭐';
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+    <header id="home" role="banner">
+        <canvas id="stars" aria-hidden="true"></canvas>
+        <div class="glow" aria-hidden="true"></div>
+        <div class="glow2" aria-hidden="true"></div>
+
+        <nav class="nav container" aria-label="Головна навігація">
+            <a class="brand" href="#home" aria-label="На головну">
+                <span class="brand-mark" aria-hidden="true">★</span>
+                Ігор Прайс
+            </a>
+            <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Меню">
+                <span class="hamburger"></span>
+            </button>
+            <div id="nav-menu" class="nav-menu">
+                <a href="#program">Програма</a>
+                <a href="#achievements">Досягнення</a>
+                <a href="#art">Творчість</a> 
+                <a href="#contacts">Контакти</a>
+                <a href="#faq">Питання</a>
+                <a href="#" class="btn btn-sm" id="open-vote-modal">Голосувати</a> 
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero container">
+        <div class="animate-on-scroll">
+            <h1>Разом з’єднаємо таланти в <span class="accent">сузір’ї</span> ДПУ</h1>
+            <p class="lead">Я, Ігор Прайс, балотуюся на голову Студпарламенту. Мета — сильна, відкрита та сервісна спільнота, де кожен має голос і можливості для зростання.</p>
+            <div class="hero__cta">
+                <a href="#program" class="btn btn-lg">Дивитися програму</a> 
+                <a href="#achievements" class="btn btn-ghost">Мої досягнення</a>
+            </div>
+        </div>
+        <div class="hero__art animate-on-scroll" aria-hidden="true">
+            <img src="https://i.ibb.co/gMkbhm1P/photo-2025-09-25-17-01-121.jpg" alt="Фото кандидата Ігоря Прайса" class="hero__photo">
+        </div>
+    </section>
+
+    <main>
+        
+        <section id="achievements" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Мої досягнення</h2>
+                
+                <div class="grid-2" style="margin-top: 30px;">
+                    <div class="card animate-on-scroll">
+                        <h3>Академічні успіхи ✨</h3>
+                        <p>Результат **200 балів з математики** та **участь у багатьох олімпіадах і конкурсах** на всеукраїнському рівні.</p>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <h3>Проєктний досвід 📊</h3>
+                        <p>Досвід організації та координації студентських проєктів, що доводить мої **лідерські та менеджерські навички**.</p>
+                    </div>
+                </div>
+                
+                <span class="badge animate-on-scroll" aria-label="Пріоритети" style="margin-top: 20px;">
+                    <span>⟡</span> освіта • лідерство • інновації • відповідальність
+                </span>
+            </div>
+        </section>
+
+        <section id="art" class="section section-alt">
+            <div class="container">
+                <h2 class="animate-on-scroll">Творчість та розвиток 🎹</h2>
+                
+                <div class="grid-2" style="margin-top: 30px;">
+                    <div class="card animate-on-scroll">
+                        <h3>Музичне мистецтво</h3>
+                        <p>Професійна **гра на фортепіано** та призові місця у **музичних конкурсах** регіонального та всеукраїнського рівня. Творчість — це дисципліна, яка допомагає знайти креативні рішення.</p>
+                    </div>
+                    <div class="card animate-on-scroll">
+                        <h3>Культурні ініціативи</h3>
+                        <p>Організація камерних вечорів та арт-проєктів. Це свідчить про мою здатність **створювати події, які об'єднують** студентську спільноту ДПУ.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="carousel-section" class="section" style="padding-top: 0;">
+            <div class="container">
+                <h3 class="animate-on-scroll">Дипломи та підтвердження</h3>
+                <p class="lead animate-on-scroll" style="margin-bottom: 20px;">Гортайте, щоб побачити мої сертифікати, нагороди та фото з конкурсів.</p>
+
+                <div class="carousel-wrapper animate-on-scroll">
+                    
+                    <div class="carousel-item">
+                        <div class="item-image-container">
+                            <img src="https://via.placeholder.com/320x180/282c34/ffd166?text=Диплом+МАТЕМАТИКА" alt="Диплом з математичної олімпіади">
+                        </div>
+                        <div class="item-content">
+                            <h4>Диплом з математики</h4>
+                            <p>Олімпіада з математики, I місце (2022). Підтверджує глибокі аналітичні навички.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="item-image-container">
+                            <img src="https://via.placeholder.com/320x180/282c34/b388ff?text=Фортепіано" alt="Фото з музичного конкурсу">
+                        </div>
+                        <div class="item-content">
+                            <h4>Музичний конкурс</h4>
+                            <p>Виступ на Всеукраїнському конкурсі піаністів, III місце (2021).</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="item-image-container">
+                            <img src="https://via.placeholder.com/320x180/282c34/4cc9f0?text=Сертифікат+МЕНТОР" alt="Сертифікат про участь у воркшопі">
+                        </div>
+                        <div class="item-content">
+                            <h4>Сертифікат ментора</h4>
+                            <p>Сертифікат про успішне завершення програми менторства для першокурсників (2023).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="carousel-item">
+                        <div class="item-image-container">
+                            <img src="https://via.placeholder.com/320x180/282c34/ffd166?text=Фото+з+олімпіади" alt="Фото з олімпіади">
+                        </div>
+                        <div class="item-content">
+                            <h4>Олімпіада з фінансів</h4>
+                            <p>Участь у міжвузівській олімпіаді з фінансової грамотності, фіналіст.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="program" class="section section-alt">
+            <div class="container">
+                <h2 class="animate-on-scroll">Агітаційна програма</h2>
+                <p class="animate-on-scroll">Стратегія на рік базується на чотирьох напрямах. Кожен — як зірка у великому сузір’ї ДПУ. Разом вони дають світло для особистого та спільного зростання.</p>
+
+                <div class="pill-tabs animate-on-scroll" role="tablist" aria-label="Напрями програми">
+                    <button class="pill active" data-tab="constellation" role="tab" aria-selected="true">«Сузірʼя»</button>
+                    <button class="pill" data-tab="science" role="tab" aria-selected="false">Наука</button>
+                    <button class="pill" data-tab="society" role="tab" aria-selected="false">Суспільний розвиток</button>
+                    <button class="pill" data-tab="campus" role="tab" aria-selected="false">Кампус і сервіси</button>
+                </div>
+
+                <div class="tabs animate-on-scroll">
+                    <article class="tab active" id="constellation" role="tabpanel">
+                        <h3>1. «Сузірʼя» талантів: Мережа студентських клубів</h3>
+                        <p>
+                            Ми перетворимо **студентські клуби** на потужний інкубатор ідей. Запуск системи **мікро-грантів** для швидкого фінансування ініціатив (спорт, творчість, дослідження) із прозорим звітуванням. Створення єдиної **онлайн-афіші** подій ДПУ та **бази менторів** (випускники та викладачі) для підтримки молодих талантів.
+                        </p>
+                        <p>
+                            **Ключова обіцянка:** 50% заявок на мікро-гранти отримують фінансування протягом перших 100 днів.
+                        </p>
+                    </article>
+
+                    <article class="tab" id="science" role="tabpanel">
+                        <h3>2. Наука і кар’єрний старт: Практика та Стипендії</h3>
+                        <p>
+                            Студпарламент має стати мостом між освітою та ринком праці. Організація **щомісячних міт-апів** з представниками бізнесу та ТОП-викладачами. Введення **міні-стипендій** та заохочень за наукові публікації, участь в олімпіадах та конференціях. Створення **партнерських програм для стажування** в компаніях Ірпеня та Києва.
+                        </p>
+                        <p>
+                            **Ключова обіцянка:** Підписання 5 меморандумів про співпрацю з бізнесом для організації стажувань до кінця семестру.
+                        </p>
+                    </article>
+
+                    <article class="tab" id="society" role="tabpanel">
+                        <h3>3. Суспільний розвиток і волонтерство: Спільнота, що діє</h3>
+                        <p>
+                            Студенти ДПУ — активна частина громадянського суспільства. Створення **Єдиного Волонтерського Хабу** для координації доброчинних ініціатив. Регулярні **кампанії донорства** (крові та ресурсів) та освітні заходи з **медіаграмотності** та **правової обізнаності**. Спільні екологічні та соціальні проєкти з місцевою громадою Ірпеня.
+                        </p>
+                        <p>
+                            **Ключова обіцянка:** Проведення не менше 3-х великих волонтерських акцій та освітніх тренінгів щомісяця.
+                        </p>
+                    </article>
+
+                    <article class="tab" id="campus" role="tabpanel">
+                        <h3>4. Кампус і цифрові сервіси: Доступність і Швидкість</h3>
+                        <p>
+                            Ми впровадимо інновації для вашого комфорту. Запуск системи **онлайн-звернень** до Студпарламенту, що гарантує відповідь протягом 48 годин. Створення **публічного трекера обіцянок** та **відкритого бюджету** ініціатив. Розробка **Карти доступності Кампусу** для забезпечення інклюзивності та безбар'єрності всіх локацій.
+                        </p>
+                        <p>
+                            **Ключова обіцянка:** Повна цифровізація подачі та обробки 70% звернень студентів через Студпарламент.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <section id="timeline" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">План: Перші 100 днів</h2>
+                <p class="animate-on-scroll">Пілот мікро-грантів «Сузірʼя», запуск публічного трекера рішень, формування ради клубів і перші меморандуми про стажування. Відкритий звіт — на 90-й день.</p>
+                <div class="progress animate-on-scroll" aria-label="Прогрес виконання"><div class="progress__bar" style="width:0%"></div></div>
+            </div>
+        </section>
+
+        <section id="contacts" class="section section-alt">
+            <div class="container">
+                <h2 class="animate-on-scroll">Контакти та прозорість</h2>
+                <div class="contact-card animate-on-scroll">
+                    <h3>Зворотний зв'язок 24/7 💬</h3>
+                    <p>Я відкритий до прямої комунікації. Ваші ідеї та питання допоможуть сформувати найкращий Студпарламент ДПУ.</p>
+                    <div class="grid-2">
+                        <div>
+                            <p><strong>Telegram:</strong> <a href="https://t.me/igor_price" target="_blank" rel="noopener">t.me/igor_price</a></p>
+                            <p><strong>Email:</strong> <a href="mailto:igor.price@dpu.edu.ua">igor.price@dpu.edu.ua</a></p>
+                        </div>
+                        <div>
+                            <p><strong>Прозорість:</strong> відкриті рішення, публічні звіти, швидкі сервіси для кожного студента.</p>
+                            <p><strong>Гаряча лінія:</strong> гарантую відповідь на офіційне звернення протягом 48 годин (після обрання).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2 class="animate-on-scroll">Питання та відповіді</h2>
+                <details class="animate-on-scroll">
+                    <summary>Як подати ідею на мікро-грант?</summary>
+                    <p>Коротка форма з описом події або дослідження, бюджетом і командою. Розгляд — до двох тижнів, результати — публічно.</p>
+                </details>
+                <details class="animate-on-scroll">
+                    <summary>Як відбуватиметься звітування?</summary>
+                    <p>Щомісячні короткі підсумки та великий відкритий звіт щокварталу. Дані доступні у трекері рішень.</p>
+                </details>
+                <details class="animate-on-scroll">
+                    <summary>Чи буде змінена система старостату?</summary>
+                    <p>Я виступаю за посилення ролі старост як ключової ланки комунікації. Ми забезпечимо їх сучасними інструментами (сервіс Campus) і регулярним доступом до керівництва ВНЗ.</p>
+                </details>
+            </div>
+        </section>
+
+        <section id="vote" class="section cta">
+            <div class="container animate-on-scroll">
+                <h2>Ваш голос формує курс 🗳️</h2>
+                <p>Підтримайте Ігоря Прайса на виборах до Студпарламенту Державного податкового університету. Разом створимо сильну, сервісну і науково зорієнтовану спільноту.</p>
+                <a class="btn btn-lg" href="#" id="open-vote-modal-cta" aria-label="Інструкція голосування">Як проголосувати</a>
+            </div>
+        </section>
+    </main>
+    
+    <div id="vote-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Закрити інструкцію">&times;</button>
+            <h3 id="modal-title">Ключові дати виборів 🗓️</h3>
+            <p>Ознайомтеся з офіційним графіком виборчого процесу Студпарламенту ДПУ.</p>
+            <ul>
+                <li>**Реєстрація кандидатів:** з 18.09 по 25.09</li>
+                <li>**Офіційне оприлюднення імен кандидатів:** до 27.09</li>
+                <li>**Передвиборча агітація:** з 28.09 по 05.10</li>
+                <li>**Дебати:** 30.09</li>
+                <li>**День тиші:** 06.10</li>
+                <li>**Вибори:** 07.10</li>
+            </ul>
+            <a href="#" class="btn" id="close-vote-modal">Зрозуміло, закрити</a>
+        </div>
+    </div>
+
+
+    <footer>
+        <div class="container">
+            <p>© <span id="y"></span> Ігор Прайс. Студпарламент ДПУ. Відкриті дані, прозорі рішення.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Мобільне меню
+    const toggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('nav-menu');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', String(!expanded));
+            menu.classList.toggle('show');
+        });
+    }
+
+    // Вкладки програми
+    const pills = document.querySelectorAll('.pill');
+    const tabs = document.querySelectorAll('.tab');
+    pills.forEach(p => p.addEventListener('click', () => {
+        pills.forEach(x => { 
+            x.classList.remove('active'); 
+            x.setAttribute('aria-selected','false'); 
+        });
+        tabs.forEach(t => t.classList.remove('active'));
+        p.classList.add('active'); 
+        p.setAttribute('aria-selected','true');
+        const targetTab = document.getElementById(p.dataset.tab);
+        if (targetTab) {
+            targetTab.classList.add('active');
+        }
+    }));
+
+    // Плавний скрол до якорів
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', e=>{
+            if (a.id.includes('open-vote-modal')) return;
+            
+            const id = a.getAttribute('href').slice(1);
+            const el = document.getElementById(id);
+            if (el){ 
+                e.preventDefault(); 
+                el.scrollIntoView({
+                    behavior:'smooth', 
+                    block:'start'
+                }); 
+            }
+        });
+    });
+
+    // АНІМАЦІЯ ПРИ СКРОЛІ (Scroll Animation)
+    const animateElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target); 
+            }
+        });
+    }, {
+        rootMargin: '0px',
+        threshold: 0.1 
+    });
+    
+    animateElements.forEach(el => observer.observe(el));
+
+
+    // ЛОГІКА МОДАЛЬНОГО ВІКНА
+    const modal = document.getElementById('vote-modal');
+    const openButtons = document.querySelectorAll('#open-vote-modal, #open-vote-modal-cta');
+    const closeButtons = document.querySelectorAll('.modal-close, #close-vote-modal');
+    
+    function openModal(e) {
+        e.preventDefault(); 
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden'; 
+    }
+
+    function closeModal() {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = ''; 
+    }
+
+    openButtons.forEach(btn => btn.addEventListener('click', openModal));
+    closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+    
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === "Escape" && modal.classList.contains('is-open')) {
+            closeModal();
+        }
+    });
+    // КІНЕЦЬ ЛОГІКИ МОДАЛЬНОГО ВІКНА
+
+
+    // Анімація зоряного поля (Stars Animation)
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    let w, h, stars;
+    let mouseX = 0, mouseY = 0; 
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = (e.clientX - w / 2) / w;
+        mouseY = (e.clientY - h / 2) / h;
+    });
+
+    function resize(){
+        w = canvas.width = window.innerWidth;
+        // ЗМІНА: Висота зірок тепер фіксована для хедера
+        h = canvas.height = 85; 
+        stars = createStars(Math.floor(w * h / 3000)); 
+    }
+    function createStars(n){
+        const arr = [];
+        for(let i=0;i<n;i++){
+            arr.push({
+                x: Math.random()*w,
+                y: Math.random()*h,
+                z: Math.random()*0.8 + 0.2, 
+                r: Math.random()*1.5 + 0.5, 
+                vx: (Math.random()-0.5)*0.08,
+                vy: (Math.random()-0.5)*0.08
+            });
+        }
+        return arr;
+    }
+    function step(){
+        ctx.clearRect(0,0,w,h);
+        const parallaxFactor = 50; 
+
+        for(const s of stars){
+            s.x += s.vx * (1.5 - s.z);
+            s.y += s.vy * (1.5 - s.z);
+            
+            let px = s.x - mouseX * parallaxFactor * (1 - s.z);
+            let py = s.y - mouseY * parallaxFactor * (1 - s.z);
+
+            if (s.x < -10) s.x = w+10; if (s.x > w+10) s.x = -10;
+            if (s.y < -10) s.y = h+10; if (s.y > h+10) s.y = -10;
+            
+            ctx.beginPath();
+            ctx.arc(px, py, s.r, 0, Math.PI*2);
+            ctx.fillStyle = `rgba(255,255,255,${0.6 + 0.4*(1-s.z)})`; 
+            ctx.shadowColor = `rgba(255, 209, 102, ${0.3 + 0.3*(1-s.z)})`;
+            ctx.shadowBlur = s.r * 2;
+            ctx.fill();
+            ctx.shadowColor = 'transparent'; 
+            ctx.shadowBlur = 0;
+        }
+        requestAnimationFrame(step);
+    }
+    resize(); step();
+    window.addEventListener('resize', resize);
+
+    // Імітація прогресу 100 днів (декоративна)
+    const bar = document.querySelector('.progress__bar');
+    let p = 0; setInterval(()=>{ p = (p+1)%101; bar.style.width = p+"%"; }, 120);
+    </script>
+</body>
+</html>
